@@ -76,6 +76,18 @@ void test_single_ss(string fmt, string data, T expected)
     }
 }
 
+void test_none(string fmt, string data)
+{
+    stringstream ss(data);
+    bool success;
+
+    success = cppinput::input(ss, fmt);
+
+    if(!success)
+    {
+        cout << "Test failure (\""<< fmt <<"\")" << endl;
+    }
+}
 
 void test()
 {
@@ -113,6 +125,10 @@ void test()
     test_single_ss("{}", "1", 1.0f);
     test_single_ss("{}", "1.3", 1.3f);
     test_single_ss("{}", "1.3", 1.3);
+
+    cout << "Testing strings with no placeholders..." << endl;
+    test_none("abc", "abc");
+    test_none("abc", "abcd");
 }
 
 int main()
