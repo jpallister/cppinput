@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include <string>
+#include <sstream>
 
 #include <assert.h>
 
@@ -131,6 +132,13 @@ bool input(std::istream &in, std::string fmt, V &value, Values &... params)
     }
 
     return true;
+}
+
+template<typename... Values>
+bool input(std::string &in, std::string fmt, Values &... params)
+{
+    std::stringstream ss(in);
+    return input(ss, fmt, params...);
 }
 
 

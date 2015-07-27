@@ -61,6 +61,22 @@ void test_double(string fmt, string data, T1 expected1, T2 expected2)
     }
 }
 
+template<typename T>
+void test_single_ss(string fmt, string data, T expected)
+{
+    T val;
+    bool success;
+
+    success = cppinput::input(data, fmt, val);
+
+    if(val != expected || !success)
+    {
+        cout << "Test failure (\""<< fmt <<"\"): \"" << val <<
+            "\" != \"" << expected << "\"" << endl;
+    }
+}
+
+
 void test()
 {
     cout << "Testing numericals..." << endl;
@@ -91,6 +107,12 @@ void test()
     test_double("{}.{}", "1.5.1.5", 1, 5);
     test_double("{}.{}", "1.5.1.5", 1.5, 1);
 
+    cout << "Testing string stream..." << endl;
+    test_single_ss("{}", "1", 1u);
+    test_single_ss("{}", "1", 1l);
+    test_single_ss("{}", "1", 1.0f);
+    test_single_ss("{}", "1.3", 1.3f);
+    test_single_ss("{}", "1.3", 1.3);
 }
 
 int main()
