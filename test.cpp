@@ -26,7 +26,7 @@ template<typename T>
 void test_single_fail(string fmt, string data, T expected)
 {
     stringstream ss(data);
-    T val;
+    T val = T();
     bool success;
 
     success = cppinput::input(ss, fmt, val);

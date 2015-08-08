@@ -1,7 +1,7 @@
 
 HEADERS=cppinput.hpp
 CC=g++-4.9
-CFLAGS=-std=c++11 -g
+CFLAGS=-std=c++11 -g -Wall
 
 all: test example
 
